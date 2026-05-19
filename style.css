@@ -629,9 +629,6 @@ footer {
 /* ==========================================================================
    9. MEDIA QUERIES (SISTEM RESPONSIVITAS SEARAH TAMPILAN GADGET/HP)
    ========================================================================== */
-/* ==========================================================================
-   9. MEDIA QUERIES (SISTEM RESPONSIVITAS SEARAH TAMPILAN GADGET/HP)
-   ========================================================================== */
 @media (max-width: 768px) {
   /* NAVBAR MOBILE OPTIMIZATION */
   .nav-container {
