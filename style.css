@@ -338,6 +338,15 @@ body {
     font-weight: 500;
 }
 
+.skill-tags .tag {
+    background-color: #f7fafc; /* Warna latar belakang kotak */
+    border: 1px solid #e2e8f0;   /* Garis tepi kotak tipis */
+    color: #4a5568;              /* Warna teks keahlian */
+    padding: 4px 10px;           /* Jarak bagian dalam agar kotak proporsional */
+    border-radius: 4px;          /* Membuat sudut kotak sedikit melengkung */
+    font-size: 0.75rem;          /* Ukuran teks dibuat kecil dan minimalis */
+    text-transform: uppercase;   /* Mengubah semua huruf menjadi kapital */
+}
 /* PENDIDIKAN */
 .edu-card {
     display: flex;
