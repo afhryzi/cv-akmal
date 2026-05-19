@@ -53,6 +53,13 @@ body {
     height: 46px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    
+    /* TAMBAHKAN ATAU UBAH BARIS INI */
+    /* Nilai standar adalah 50% 50% (Tengah-Tengah) */
+    object-position: 50% 0%; /* Menggeser isi gambar ke bawah sebanyak 10% */
     
     /* Trik Margin Bulat di Dalam */
     padding: 3px;         /* Ini berfungsi sebagai 'margin bulat' di dalam bingkai */
@@ -69,6 +76,7 @@ body {
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: 50% 10%;
     
     /* Trik Margin Bulat di Dalam */
     padding: 6px; 
@@ -203,16 +211,6 @@ body {
 .hero-buttons {
     display: flex;
     gap: 15px;
-}
-.btn-primary {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid #4299e1;
-    color: #4299e1;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 500;
-    transition: all 0.3s ease;
 }
 
 .btn-secondary {
