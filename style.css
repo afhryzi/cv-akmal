@@ -1,0 +1,419 @@
+/* RESET & BASE STYLE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* NAVBAR MODERN (GLASSMORPHISM & ANIMASI) */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* Efek semi-transparan putih */
+    background-color: rgba(255, 255, 255, 0.8); 
+    /* Efek blur kaca di belakang navbar (tidak didukung browser jadul, tapi sangat cantik di browser modern) */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 20px;
+}
+
+/* Efek Cincin Ganda Bulat untuk Foto Navbar */
+.nav-logo-img {
+    width: 46px;         /* Sedikit diperbesar untuk menampung padding */
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    /* Trik Margin Bulat di Dalam */
+    padding: 3px;         /* Ini berfungsi sebagai 'margin bulat' di dalam bingkai */
+    background-color: #fff; /* Warna latar belakang pembatas */
+    border: 2px solid #4299e1; /* Garis bingkai paling luar */
+    
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+/* Efek Cincin Ganda Bulat untuk Foto Hero Section */
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    /* Trik Margin Bulat di Dalam */
+    padding: 6px; 
+    background-color: transparent; /* Membuat celah bening memperlihatkan background hero */
+    border: 3px solid #4299e1;     /* Garis bingkai luar berwarna biru */
+    
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* Memberi jarak antar menu dengan rapi */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Mengubah warna teks saat kursor mendekat */
+.nav-links a:hover {
+    color: #4299e1;
+}
+
+/* MEMBUAT EFEK GARIS BAWAH BERANIMASI (HOVER EFFECT) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0); /* Awalnya garis tidak terlihat (skala 0) */
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4299e1;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out; /* Animasi melebar */
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1); /* Garis melebar penuh saat di-hover */
+    transform-origin: bottom left;
+}
+/* ==========================================
+   HERO SECTION PREMIUM (SPLIT LAYOUT)
+   ========================================== */
+.hero {
+    background: radial-gradient(circle at 80% 20%, #2a4365 0%, #1a365d 100%);
+    color: #fff;
+    min-height: 65vh; 
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    padding: 40px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    gap: 50px;
+}
+
+/* Sisi Teks */
+.hero-text-side {
+    flex: 1.2;
+    text-align: left;
+}
+
+.hero-text-side h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.hero-brief {
+    font-size: 1rem;
+    color: #cbd5e0;
+    margin-bottom: 30px;
+    max-width: 550px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* Sisi Foto */
+.hero-image-side {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Efek Bingkai Lapis Kedua (Double Ring) */
+.profile-img-container {
+    position: relative;
+    padding: 10px;
+    border: 2px dashed rgba(66, 153, 225, 0.4);
+    border-radius: 50%;
+    animation: spin 20s linear infinite; /* Garis putus-putus berputar pelan */
+}
+
+.profile-img {
+    width: 220px; /* Ukuran foto melingkar yang gagah */
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover; /* Memastikan foto asli Anda tidak gepeng */
+    border: 6px solid #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    animation: unspin 20s linear infinite; /* Menjaga foto Anda tetap tegak saat bingkai berputar */
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+/* Grup Tombol */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid #4299e1;
+    color: #4299e1;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid #4299e1;
+    color: #4299e1;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #4299e1;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ANIMASI CSS */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+@keyframes unspin {
+    100% { transform: rotate(-360deg); }
+}
+
+/* RESPONSIVE HERO (UNTUK HP) */
+@media (max-width: 868px) {
+    .hero {
+        text-align: center;
+        padding: 60px 0;
+    }
+    .hero-container {
+        flex-direction: column-reverse; /* Foto pindah ke atas teks saat dibuka di HP */
+        gap: 35px;
+    }
+    .hero-text-side {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-text-side h1 {
+        font-size: 2.2rem;
+    }
+    .profile-img {
+        width: 180px;
+        height: 180px;
+    }
+}
+/* CARD & SECTION */
+.section {
+    padding: 60px 0 20px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #1a365d;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #4299e1;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* TIMELINE (PENGALAMAN) */
+.timeline {
+    position: relative;
+    border-left: 3px solid #cbd5e0;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 25px;
+    width: 12px;
+    height: 12px;
+    background-color: #4299e1;
+    border-radius: 50%;
+}
+
+.timeline-date {
+    font-weight: 600;
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.timeline-content h3 {
+    color: #2d3748;
+}
+
+.timeline-content h4 {
+    color: #4299e1;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* PENDIDIKAN */
+.edu-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edu-badge {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* KONTAK GRID */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.contact-card h3 {
+    color: #1a365d;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #1a365d;
+    color: #a0aec0;
+    margin-top: 60px;
+    font-size: 0.9rem;
+}
+
+/* BACK TO TOP BUTTON */
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    background-color: #1a365d;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+#backToTop:hover {
+    background-color: #4299e1;
+}
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 600px) {
+    .hero-content h1 { font-size: 2rem; }
+    .nav-links { display: none; } /* Sembunyikan menu di HP demi kesederhanaan */
+    .edu-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+/* ANIMASI FADE IN */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
