@@ -2,9 +2,9 @@
 // 1. EFEK MENGETIK OTOMATIS (TYPING EFFECT) DI HERO AREA SISI UTAMA
 // ==========================================================================
 const words = [
-  "Operational Production.",
-  "Quality Control Specialist.",
   "Chemical Analyst Graduate.",
+  "Operational Production.",
+  "Quality Control.",
 ];
 let i = 0; // Menyimpan urutan indeks kata saat ini di dalam array words
 let timer; // Menyimpan referensi pengatur waktu eksekusi setTimeout
