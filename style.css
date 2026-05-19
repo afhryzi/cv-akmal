@@ -629,6 +629,90 @@ footer {
 /* ==========================================================================
    9. MEDIA QUERIES (SISTEM RESPONSIVITAS SEARAH TAMPILAN GADGET/HP)
    ========================================================================== */
+/* ==========================================================================
+   9. MEDIA QUERIES (SISTEM RESPONSIVITAS SEARAH TAMPILAN GADGET/HP)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* NAVBAR MOBILE OPTIMIZATION */
+  .nav-container {
+    flex-direction: column; /* Menumpuk logo di atas dan menu di bawah */
+    gap: 12px;
+    padding: 12px 10px;
+  }
+
+  .nav-links {
+    gap: 10px;
+    flex-wrap: wrap; /* Jika layar sangat kecil, menu otomatis turun ke baris baru tanpa terpotong */
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem; /* Memperkecil sedikit ukuran font di HP */
+    padding: 6px 10px;
+    background-color: rgba(
+      66,
+      153,
+      225,
+      0.08
+    ); /* Mengubah menu menjadi tombol kapsul transparan */
+    border-radius: 15px;
+    display: inline-block;
+    transition: var(--transition-fast);
+  }
+
+  .nav-links a:hover {
+    background-color: #4299e1;
+    color: #ffffff !important;
+  }
+
+  .nav-links a::after {
+    display: none; /* Menghilangkan animasi garis bawah karena fungsinya sudah diganti tombol kapsul */
+  }
+
+  /* HERO & TIMELINE MOBILE OPTIMIZATION */
+  .hero {
+    margin-top: 110px; /* Menambah jarak atas karena ukuran navbar mobile sedikit meninggi */
+    padding: 50px 0;
+  }
+
+  .hero-container {
+    flex-direction: column; /* Mengubah baris horizontal menjadi tumpukan vertikal pada layar HP */
+    text-align: center;
+  }
+
+  .hero-text-side h1 {
+    font-size: 2.1rem; /* Ukuran judul nama disesuaikan agar pas di layar HP */
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .profile-img {
+    width: 170px;
+    height: 170px; /* Memperkecil dimensi lingkaran foto agar proporsional */
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .timeline-date {
+    margin-top: 2px;
+  }
+
+  /* PORTOFOLIO MOBILE OPTIMIZATION */
+  .portfolio-container {
+    margin-top: 30px; /* Memangkas jarak atas dokumen studi kasus di mobile */
+  }
+
+  .portfolio-header h2 {
+    font-size: 1.35rem; /* Mengurangi ukuran judul studi kasus agar tidak memakan tempat */
+  }
+}
 @media (max-width: 768px) {
   .hero-container {
     flex-direction: column; /* Mengubah baris horizontal menjadi tumpukan vertikal pada layar HP */
