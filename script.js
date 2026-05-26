@@ -2,8 +2,8 @@
 // 1. EFEK MENGETIK OTOMATIS (TYPING EFFECT) DI HERO AREA SISI UTAMA
 // ==========================================================================
 const words = [
-  "Chemical Analyst Graduate.",
-  "Operational Production.",
+  "Lulusan Kimia Analisis.",
+  "Operator Produksi.",
   "Quality Control.",
 ];
 let i = 0; // Menyimpan urutan indeks kata saat ini di dalam array words
@@ -35,28 +35,26 @@ function deletingEffect() {
   let word = words[i].split("");
   var loopDeleting = function () {
     if (word.length > 0) {
-      word.pop(); // Memotong huruf paling akhir dari baris teks aktif
+      word.pop();
       targetElement.innerHTML = word.join("");
     } else {
-      // Mengubah urutan indeks menuju kata berikutnya, berputar otomatis jika melampaui batas array
-      i = (i + 1) % words.length;
-      setTimeout(typingEffect, 500); // Jeda transisi sebelum mengetik ulang kata baru
+      i = (i + 1) % words.length; // Berpindah ke kata berikutnya di dalam array
+      setTimeout(typingEffect, 500); // Jeda setengah detik sebelum mulai mengetik kata baru
       return false;
     }
-    timer = setTimeout(loopDeleting, 50); // Kecepatan penghapusan karakter (50ms)
+    timer = setTimeout(loopDeleting, 50); // Kecepatan penghapusan per karakter (50ms)
   };
   loopDeleting();
 }
 
-// Menjalankan inisiasi fungsi setelah seluruh halaman DOM selesai dimuat browser
+// Inisiasi efek ketik asli saat DOM siap
 document.addEventListener("DOMContentLoaded", typingEffect);
 
 // ==========================================================================
-// 2. LOGIKA KONTROL TOMBOL UTILITAS UTAMA BACK TO TOP
+// 2. MANAGEMENT UTILITY KONTROL SCROLL (BACK TO TOP & FADE-IN SECTION)
 // ==========================================================================
 const backToTopButton = document.getElementById("backToTop");
 
-// Menggabungkan seluruh aksi pemantauan event scroll global jendela layar aktif
 window.onscroll = function () {
   scrollFunction();
   revealSections();
@@ -64,8 +62,6 @@ window.onscroll = function () {
 
 function scrollFunction() {
   if (!backToTopButton) return;
-
-  // Memunculkan tombol jika pengguna menggulir ke bawah lebih dari 300 piksel
   if (
     document.body.scrollTop > 300 ||
     document.documentElement.scrollTop > 300
@@ -76,7 +72,6 @@ function scrollFunction() {
   }
 }
 
-// Eksekusi skrol balik halus (smooth scroll) menuju koordinat 0 atas saat tombol diklik
 if (backToTopButton) {
   backToTopButton.addEventListener("click", () => {
     window.scrollTo({
@@ -86,18 +81,12 @@ if (backToTopButton) {
   });
 }
 
-// ==========================================================================
-// 3. EFEK ANIMASI KEMUNCULAN ELEMEN SEARAH GULIR (FADE IN SCROLL EFFECT)
-// ==========================================================================
 function revealSections() {
   const faders = document.querySelectorAll(".fade-in");
-
   faders.forEach((fader) => {
     const slideInAt =
       window.scrollY + window.innerHeight - fader.clientHeight / 2;
     const isLetterShown = slideInAt > fader.offsetTop;
-
-    // Membuka segel opacity dengan mengaktifkan kelas CSS ".appear" jika koordinat terpenuhi
     if (isLetterShown) {
       fader.classList.add("appear");
     }
@@ -105,42 +94,34 @@ function revealSections() {
 }
 
 // ==========================================================================
-// 4. ANIMASI INTERAKTIF POP-UP BERURUTAN KHUSUS DI HALAMAN PORTFOLIO.HTML
+// 3. ANIMASI INTERSECTION OBSERVER (KHUSUS CERTIFICATION CARD INDEX.HTML)
 // ==========================================================================
-function animatePortfolioCards() {
-  const starBoxes = document.querySelectorAll(".star-box");
+document.addEventListener("DOMContentLoaded", function () {
+  // Hanya menargetkan elemen yang ADA di index.html saja (.certification-card)
+  const animatedElements = document.querySelectorAll(".certification-card");
+  if (animatedElements.length === 0) return;
 
-  // Konfigurasi ambang pengamatan viewport browser
   const observerOptions = {
-    root: null, // Menggunakan area pandang layar aktif klien
-    threshold: 0.1, // Memicu penayangan jika minimal 10% area kartu masuk ke dalam layar
+    root: null,
+    threshold: 0.1,
     rootMargin: "0px",
   };
 
-  const boxObserver = new IntersectionObserver((entries, observer) => {
+  const UIObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Kartu dimunculkan satu per satu dari arah bawah dibantu delay matematika CSS
         entry.target.style.opacity = "1";
         entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target); // Melepas pengamatan setelah aksi selesai agar menghemat pemakaian RAM
+        observer.unobserve(entry.target); // Lepas memori observer setelah animasi aktif
       }
     });
   }, observerOptions);
 
-  starBoxes.forEach((box, index) => {
-    // Menyiapkan parameter mentah awal kartu tersembunyi sebelum animasi diaktifkan
-    box.style.opacity = "0";
-    box.style.transform = "translateY(20px)";
-    // Pembuatan rumus matematis jeda berurutan otomatis (staggered animation delay)
-    box.style.transition = `all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) ${index * 0.15}s`;
-    boxObserver.observe(box);
+  animatedElements.forEach((element, index) => {
+    element.style.opacity = "0";
+    element.style.transform = "translateY(25px)";
+    // Efek kemunculan beruntun (staggered delay) yang halus saat di-scroll
+    element.style.transition = `all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) ${(index % 3) * 0.15}s`;
+    UIObserver.observe(element);
   });
-}
-
-// Validasi Otomatis: Fungsi eksekusi kartu STAR hanya aktif jika mendeteksi elemen ".star-box" di halaman tersebut
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelectorAll(".star-box").length > 0) {
-    animatePortfolioCards();
-  }
 });
