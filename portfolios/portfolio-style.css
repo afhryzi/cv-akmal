@@ -4,21 +4,20 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Mencegah padding dan border merusak layout total dimensi elemen */
+  box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth; /* Efek transisi gulir halus bawaan web browser saat melompat sauh */
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #f4f7f6; /* Warna latar belakang abu-abu terang netral yang nyaman di mata */
+  background-color: #f4f7f6;
   color: #333333;
   line-height: 1.6;
 }
 
-/* Pembungkus konten utama dengan batas lebar maksimal standar industri */
 .container {
   max-width: 900px;
   margin: 0 auto;
@@ -26,217 +25,8 @@ body {
 }
 
 /* ==========================================================================
-   2. STYLING NAVIGATION BAR (PREMIUM GLASSMORPHISM DESIGN)
+   2. CARD BASE SYSTEM
    ========================================================================== */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Transparansi dasar pembentuk efek kaca */
-  backdrop-filter: blur(
-    10px
-  ); /* Efek buram latar belakang premium khas iOS/Glassmorphism */
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  z-index: 1000; /* Menjamin posisi navigasi selalu berada di lapisan paling atas */
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 20px;
-}
-
-/* Penjagaan bingkai lingkar foto profil logo pada navbar */
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.nav-logo-img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 0%;
-  border: 2px solid #4299e1; /* Aksen bingkai biru langit */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #4a5568;
-  font-weight: 500;
-  font-size: 0.95rem;
-  position: relative;
-  padding: 5px 0;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #4299e1;
-}
-
-/* Animasi garis bawah interaktif melebar dari tengah ke samping saat di-hover */
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #4299e1;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.nav-links a:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-/* ==========================================================================
-   3. HERO BANNER SYSTEM (SPLIT LAYOUT & TWIN ORBITAL ROTATION)
-   ========================================================================== */
-.hero {
-  background-color: #1a365d; /* Warna biru navy korporat profesional */
-  color: #ffffff;
-  padding: 80px 0;
-  margin-top: 64px; /* Mencegah teks tertutup oleh navbar yang melayang melintasi layar */
-}
-
-.hero-container {
-  display: flex;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.hero-text-side {
-  flex: 1;
-}
-
-.hero-text-side h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
-
-.hero-text-side .highlight {
-  color: #4299e1; /* Warna sorotan biru muda cerah */
-}
-
-.hero-text-side .role {
-  font-size: 1.2rem;
-  color: #e2e8f0;
-  font-weight: 400;
-}
-
-.hero-buttons {
-  margin-top: 25px;
-  display: flex;
-  gap: 15px;
-}
-
-.btn-secondary {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 2px solid #4299e1;
-  color: #4299e1;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background-color: #4299e1;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-/* Animasi orbital ganda berputar berlawanan untuk menjaga titik pandang foto profil */
-.hero-image-side {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.profile-img-container {
-  position: relative;
-  padding: 8px;
-  border: 2px dashed rgba(66, 153, 225, 0.5);
-  border-radius: 50%;
-  animation: spin 20s linear infinite; /* Putaran searah jarum jam untuk ring luar */
-}
-
-.profile-img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 10%;
-  border: 5px solid #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  animation: unspin 20s linear infinite; /* Putaran balik arah agar wajah foto tetap tegak lurus */
-}
-
-/* Logika Animasi Perputaran Mekanis */
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes unspin {
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
-/* ==========================================================================
-   4. CARD BASE SYSTEM (SISTEM STRUKTUR KARTU KONTEN)
-   ========================================================================== */
-.section {
-  padding: 40px 0 10px 0;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  color: #1a365d;
-  margin-bottom: 20px;
-}
-
-/* Pembentuk garis bawah aksen dekoratif tebal di bawah judul section */
-.section-title::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 4px;
-  background-color: #4299e1;
-  margin-top: 8px;
-  border-radius: 2px;
-}
-
 .card {
   background-color: #ffffff;
   padding: 25px;
@@ -246,169 +36,13 @@ body {
 }
 
 /* ==========================================================================
-   5. VERTICAL TIMELINE LAYOUT (PENGALAMAN KERJA & LIST TUGAS)
+   3. PORTOFOLIO EXTENSION SPECIFIC DESIGN (MITIGASI-LOGAM.HTML)
    ========================================================================== */
-.timeline {
-  position: relative;
-  border-left: 2px solid #e2e8f0; /* Batang garis vertikal penopang alur sejarah */
-  padding-left: 20px;
-  margin-left: 10px;
+.portfolio-container {
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
 
-.timeline-item {
-  position: relative;
-  margin-bottom: 30px;
-}
-
-/* Titik simpul bulat penanda posisi tanggal di sepanjang garis timeline */
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -27px;
-  top: 6px;
-  width: 12px;
-  height: 12px;
-  background-color: #4299e1;
-  border-radius: 50%;
-  border: 2px solid #f4f7f6;
-}
-
-.timeline-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.timeline-header h3 {
-  font-size: 1.2rem;
-  color: #2d3748;
-}
-
-.timeline-date {
-  font-size: 0.9rem;
-  color: #718096;
-  font-weight: 500;
-}
-
-.job-title {
-  color: #4299e1;
-  font-weight: 600;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-}
-
-/* Struktur Unordered List (ul) untuk pembagian tugas operasional agar rapi dan scannable */
-.job-task-list {
-  padding-left: 15px;
-  margin-top: 5px;
-}
-
-.job-task-list li {
-  color: #4a5568;
-  font-size: 0.95rem;
-  margin-bottom: 8px;
-  text-align: justify;
-  list-style-type: disc; /* Bentuk lingkaran peluru standar */
-}
-
-.job-task-list li:last-child {
-  margin-bottom: 0;
-}
-
-/* Pembungkus tombol interaktif di bawah rincian tugas */
-.portfolio-btn-container {
-  margin-top: 20px;
-}
-
-.btn-portfolio {
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  background-color: #1a365d;
-  text-decoration: none;
-  color: #ffffff;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(26, 54, 93, 0.15);
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.btn-portfolio:hover {
-  background-color: #4299e1;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(66, 153, 225, 0.3);
-}
-
-/* ==========================================================================
-   6. EDUCATION, CERTIFICATION, & CONTACT ACTIONS
-   ========================================================================== */
-.edu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.edu-badge {
-  background-color: #e2e8f0;
-  color: #4a5568;
-  padding: 5px 15px;
-  border-radius: 15px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.contact-card {
-  text-align: center;
-}
-
-.btn-contact {
-  display: inline-block;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.email-btn {
-  background-color: #ebf8ff;
-  color: #2b6cb0;
-  border: 1px solid #bee3f8;
-}
-.email-btn:hover {
-  background-color: #2b6cb0;
-  color: #ffffff;
-}
-
-.wa-btn {
-  background-color: #e6fffa;
-  color: #234e52;
-  border: 1px solid #b2f5ea;
-}
-.wa-btn:hover {
-  background-color: #234e52;
-  color: #ffffff;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.contact-card h3 {
-  color: #1a365d;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-}
-
-/* ==========================================================================
-   7. PORTOFOLIO EXTENSION SPECIFIC DESIGN (PORTFOLIO.HTML)
-   ========================================================================== */
 .portfolio-main-card {
   border-top: 5px solid #1a365d;
   position: relative;
@@ -483,6 +117,7 @@ body {
   text-align: justify;
 }
 
+/* SYSTEM STRUKTUR KARTU METODE STAR */
 .star-grid {
   display: flex;
   flex-direction: column;
@@ -505,13 +140,13 @@ body {
   box-shadow: 0 12px 20px rgba(26, 54, 93, 0.06);
 }
 
-/* Modifikasi garis tepi kiri untuk membedakan kategori box STAR */
 .border-navy {
   border-left: 5px solid #1a365d;
 }
+
 .border-orange {
   border-left: 5px solid #f2711c;
-  background-color: #fffdf9; /* Nada warna hangat khusus penanda kotak keberhasilan (Result) */
+  background-color: #fffdf9;
 }
 
 .border-orange:hover {
@@ -534,6 +169,7 @@ body {
 .label-navy {
   background-color: #1a365d;
 }
+
 .label-orange {
   background-color: #f2711c;
 }
@@ -545,6 +181,7 @@ body {
   margin: 0;
 }
 
+/* CUSTOM LIST UNTUK ACTION (TINDAKAN) */
 .star-action-list {
   padding-left: 5px;
   list-style: none;
@@ -559,7 +196,6 @@ body {
   text-align: justify;
 }
 
-/* Bulir list centang (✓) kustom memanfaatkan keunggulan pseudo-element CSS */
 .star-action-list li::before {
   content: "✓";
   position: absolute;
@@ -574,6 +210,7 @@ body {
   margin-bottom: 0;
 }
 
+/* SECTION KOTAK NILAI TAMBAH */
 .portfolio-value-box {
   background: linear-gradient(135deg, #f0fdf4, #e8fbf0);
   border: 1px solid #bbf7d0;
@@ -592,185 +229,14 @@ body {
 }
 
 /* ==========================================================================
-   8. FOOTER SYSTEM & BACK TO TOP UTILITY
-   ========================================================================== */
-footer {
-  text-align: center;
-  padding: 40px 0;
-  background-color: #1a365d;
-  color: #a0aec0;
-  margin-top: 60px;
-  font-size: 0.9rem;
-}
-
-#backToTop {
-  display: none; /* Disembunyikan secara default, diatur dinamis lewat Javascript */
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 99;
-  background-color: #1a365d;
-  color: #ffffff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 10px 15px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-#backToTop:hover {
-  background-color: #4299e1;
-  transform: translateY(-3px);
-}
-
-/* ==========================================================================
-   9. MEDIA QUERIES (SISTEM RESPONSIVITAS SEARAH TAMPILAN GADGET/HP)
+   4. MEDIA QUERIES (RESPONSIVITAS MOBILE TAMPILAN GADGET/HP)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* NAVBAR MOBILE OPTIMIZATION */
-  .nav-container {
-    flex-direction: column; /* Menumpuk logo di atas dan menu di bawah */
-    gap: 12px;
-    padding: 12px 10px;
-  }
-
-  .nav-links {
-    gap: 10px;
-    flex-wrap: wrap; /* Jika layar sangat kecil, menu otomatis turun ke baris baru tanpa terpotong */
-    justify-content: center;
-    width: 100%;
-  }
-
-  .nav-links a {
-    font-size: 0.85rem; /* Memperkecil sedikit ukuran font di HP */
-    padding: 6px 10px;
-    background-color: rgba(
-      66,
-      153,
-      225,
-      0.08
-    ); /* Mengubah menu menjadi tombol kapsul transparan */
-    border-radius: 15px;
-    display: inline-block;
-    transition: var(--transition-fast);
-  }
-
-  .nav-links a:hover {
-    background-color: #4299e1;
-    color: #ffffff !important;
-  }
-
-  .nav-links a::after {
-    display: none; /* Menghilangkan animasi garis bawah karena fungsinya sudah diganti tombol kapsul */
-  }
-
-  /* HERO & TIMELINE MOBILE OPTIMIZATION */
-  .hero {
-    margin-top: 110px; /* Menambah jarak atas karena ukuran navbar mobile sedikit meninggi */
-    padding: 50px 0;
-  }
-
-  .hero-container {
-    flex-direction: column; /* Mengubah baris horizontal menjadi tumpukan vertikal pada layar HP */
-    text-align: center;
-  }
-
-  .hero-text-side h1 {
-    font-size: 2.1rem; /* Ukuran judul nama disesuaikan agar pas di layar HP */
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .profile-img {
-    width: 170px;
-    height: 170px; /* Memperkecil dimensi lingkaran foto agar proporsional */
-  }
-
-  .timeline-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  .timeline-date {
-    margin-top: 2px;
-  }
-
-  /* PORTOFOLIO MOBILE OPTIMIZATION */
   .portfolio-container {
-    margin-top: 30px; /* Memangkas jarak atas dokumen studi kasus di mobile */
+    margin-top: 30px;
   }
 
   .portfolio-header h2 {
-    font-size: 1.35rem; /* Mengurangi ukuran judul studi kasus agar tidak memakan tempat */
+    font-size: 1.35rem;
   }
-}
-@media (max-width: 768px) {
-  .hero-container {
-    flex-direction: column; /* Mengubah baris horizontal menjadi tumpukan vertikal pada layar HP */
-    text-align: center;
-  }
-  .hero-buttons {
-    justify-content: center;
-  }
-  .timeline-header {
-    flex-direction: column;
-  }
-  .timeline-date {
-    margin-top: 5px;
-  }
-}
-
-/* SYSTEM STATE: Kondisi awal animasi pemicu scroll fade-in JS */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.8s ease-out,
-    transform 0.8s ease-out;
-}
-
-.fade-in.appear {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ==========================================================================
-   10. EXTRACTED INLINE STYLES CODE (MIGRATION CLASSES FOR CLEAN HTML)
-   ========================================================================== */
-.portfolio-container {
-  margin-top: 60px;
-  margin-bottom: 40px;
-}
-
-.edu-sub {
-  font-size: 1rem;
-}
-
-.edu-meta {
-  font-size: 1rem;
-}
-
-.edu-org-title {
-  margin-top: 15px;
-  font-weight: 500;
-}
-
-.edu-org-desc {
-  font-size: 0.95rem;
-  color: #4a5568;
-  text-align: justify;
-}
-
-.contact-space-email {
-  margin-bottom: 20px;
-}
-
-.contact-space-wa {
-  margin-top: 10px;
 }
